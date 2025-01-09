@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'database_helper.dart'; // Import the database helper
 import 'main.dart';
 
 class AvatarSelectionScreen extends StatefulWidget {
@@ -11,6 +12,30 @@ class AvatarSelectionScreen extends StatefulWidget {
 class _AvatarSelectionScreenState extends State<AvatarSelectionScreen> {
   int? selectedAvatar; // Store the index of the selected avatar
   TextEditingController nameController = TextEditingController(); // Controller for the name input
+
+  @override
+  void dispose() {
+    nameController.dispose();
+    super.dispose();
+  }
+
+  Future<void> saveUserData() async {
+    final name = nameController.text;
+    if (selectedAvatar != null && name.isNotEmpty) {
+      await DatabaseHelper().saveUserData(name, selectedAvatar!);
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const MyApp()), // Adjust if needed
+      );
+    } else {
+      // Show error if no avatar or name is selected
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text("Please select an avatar and enter your name."),
+        ),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,8 +52,7 @@ class _AvatarSelectionScreenState extends State<AvatarSelectionScreen> {
                 "Select your avatar and state your name.",
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  color: Color(0xFF035669)
-, // Set text color to blue
+                  color: Color(0xFF035669), // Set text color to blue
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                   fontFamily: 'Lemon', // Set font family to Lemon
@@ -58,7 +82,7 @@ class _AvatarSelectionScreenState extends State<AvatarSelectionScreen> {
                           child: CircleAvatar(
                             radius: 45,
                             backgroundImage: AssetImage(
-                              'assets/avatar${index + 1}.png', // Replace with your avatar images
+                              'assets/images/avatar${index + 1}.png', // Replace with your avatar images
                             ),
                           ),
                         ),
@@ -86,26 +110,9 @@ class _AvatarSelectionScreenState extends State<AvatarSelectionScreen> {
               const SizedBox(height: 40),
               // Play button
               ElevatedButton(
-                onPressed: () {
-                  if (selectedAvatar != null && nameController.text.isNotEmpty) {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(builder: (context) => MyApp()),
-                    );
-                  } else {
-                    // Show error if no avatar or name is selected
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: Text(
-                          "Please select an avatar and enter your name.",
-                        ),
-                      ),
-                    );
-                  }
-                },
+                onPressed: saveUserData, // Save user data and navigate
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Color(0xFF035669)
-, // Set button color to blue
+                  backgroundColor: const Color(0xFF035669), // Set button color to blue
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30),
                   ),

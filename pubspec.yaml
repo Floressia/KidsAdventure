@@ -20,7 +20,8 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
+  sqflite: ^2.2.8
+  path: ^1.8.3
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
   # activated in the `analysis_options.yaml` file located at the root of your
@@ -30,20 +31,20 @@ dev_dependencies:
 
 flutter:
   assets:
-    - assets/avatar.png
-    - assets/logo.png
-    - assets/animals.png
-    - assets/PIG.png
-    - assets/NUMERO.png
-    - assets/COUNT.png
-    - assets/SHEP.png
-    - assets/splash.png
-    - assets/avatar1.png
-    - assets/avatar2.png
-    - assets/avatar3.png
-    - assets/avatar4.png
-    - assets/avatar5.png
-    - assets/avatar6.png
+    - assets/images/avatar.png
+    - assets/images/logo.png
+    - assets/images/animals.png
+    - assets/images/PIG.png
+    - assets/images/NUMERO.png
+    - assets/images/COUNT.png
+    - assets/images/SHEP.png
+    - assets/images/splash.png
+    - assets/images/avatar1.png
+    - assets/images/avatar2.png
+    - assets/images/avatar3.png
+    - assets/images/avatar4.png
+    - assets/images/avatar5.png
+    - assets/images/avatar6.png
     - assets/fonts/
     
   uses-material-design: true

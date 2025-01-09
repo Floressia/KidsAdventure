@@ -33,7 +33,7 @@ class _SplashScreenState extends State<SplashScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset(
-                'assets/splash.png', // Replace with your logo path
+                'assets/images/splash.png', // Replace with your logo path
                 width: 600, // Adjust as needed
                 height: 600,
               ),
