@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'main.dart';
 
 class AvatarSelectionScreen extends StatefulWidget {
+  const AvatarSelectionScreen({super.key});
+
   @override
   _AvatarSelectionScreenState createState() => _AvatarSelectionScreenState();
 }

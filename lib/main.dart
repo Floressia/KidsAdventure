@@ -18,6 +18,8 @@ class MyApp extends StatelessWidget {
 }
 
 class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -208,6 +210,8 @@ class WaveAppBarClipper extends CustomClipper<Path> {
 
 // Home Page Content
 class HomeContent extends StatelessWidget {
+  const HomeContent({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -333,6 +337,8 @@ class HomeContent extends StatelessWidget {
 
 // Games Page (No AppBar or Logo)
 class GamesPage extends StatelessWidget {
+  const GamesPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     // Get screen width for responsiveness
@@ -433,7 +439,6 @@ class GamesPage extends StatelessWidget {
             onPressed: () {
               // Button action
             },
-            child: Text('Play'),
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.lightBlue,
               foregroundColor: Colors.white,
@@ -442,6 +447,7 @@ class GamesPage extends StatelessWidget {
               ),
               padding: EdgeInsets.symmetric(vertical: 8), // Adjust button padding
             ),
+            child: Text('Play'),
           ),
         ),
       ],
@@ -457,6 +463,8 @@ class GamesPage extends StatelessWidget {
 
 // Profile Page (No AppBar or Logo)
 class ProfilePage extends StatelessWidget {
+  const ProfilePage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Center(
